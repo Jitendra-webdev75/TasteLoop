@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --auth-bg: #faf9f7;
+  --auth-card: #ffffff;
+  --auth-ink: #1c1c1a;
+  --auth-muted: #74736d;
+  --auth-border: #e6e3dc;
+  --auth-accent: #16594a;
+  --auth-accent-hover: #124a3e;
+  --auth-accent-soft: #eaf2ef;
+  --auth-error: #b3432b;
+}
+
+.auth-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--auth-bg);
+  font-family: "Inter", sans-serif;
+  color: var(--auth-ink);
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--auth-accent-soft);
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+
+.auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--auth-muted);
+  text-decoration: none;
+  border-radius: 7px;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.auth-tab.active {
+  background: var(--auth-card);
+  color: var(--auth-accent);
+  box-shadow: 0 1px 2px rgba(28, 28, 26, 0.06);
+}
+
+.auth-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--auth-accent);
+  margin: 0 0 8px;
+}
+
+.auth-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: var(--auth-muted);
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--auth-ink);
+  letter-spacing: 0.01em;
+}
+
+.auth-field input {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--auth-border);
+  background: var(--auth-card);
+  color: var(--auth-ink);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.auth-field input::placeholder {
+  color: #b3b1a9;
+}
+
+.auth-field input:focus {
+  border-color: var(--auth-accent);
+  box-shadow: 0 0 0 3px var(--auth-accent-soft);
+}
+
+.auth-field input:focus-visible {
+  border-color: var(--auth-accent);
+  box-shadow: 0 0 0 3px var(--auth-accent-soft);
+}
+
+.auth-error {
+  font-size: 12.5px;
+  color: var(--auth-error);
+  margin: -8px 0 0;
+}
+
+.auth-submit {
+  margin-top: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--auth-accent);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.auth-submit:hover {
+  background: var(--auth-accent-hover);
+}
+
+.auth-submit:focus-visible {
+  outline: 2px solid var(--auth-accent);
+  outline-offset: 2px;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--auth-muted);
+  margin-top: 24px;
+}
+
+.auth-switch a {
+  color: var(--auth-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.auth-role-switch {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--auth-muted);
+  margin-top: 12px;
+}
+
+.auth-role-switch a {
+  color: var(--auth-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--auth-border);
+  text-underline-offset: 2px;
+}
