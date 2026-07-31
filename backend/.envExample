@@ -1,0 +1,6 @@
+PORT=yourPort
+DB_URI=[your Uri]
+JWT_SECRET=[your Secret]
+PUBLIC_KEY=[your public key]
+PRIVATE_KEY=[your private key]
+URL_ENDPOINT=[your urlendpoint ]
