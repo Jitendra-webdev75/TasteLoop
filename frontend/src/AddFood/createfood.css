@@ -1,0 +1,213 @@
+.create-food {
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  padding: 24px 16px;
+  background: var(--auth-bg);
+  color: var(--auth-ink);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.create-food__card {
+  width: min(100%, 560px);
+  margin: 20px auto;
+  padding: 28px 22px 26px;
+  background: var(--auth-card);
+  border: 1px solid var(--auth-border);
+  border-radius: 24px;
+  box-shadow: 0 22px 50px rgba(28, 28, 26, 0.08);
+}
+
+.create-food__eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--auth-accent);
+}
+
+.create-food__title {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(26px, 5vw, 34px);
+  line-height: 1.1;
+}
+
+.create-food__subtitle {
+  margin: 12px 0 22px;
+  color: var(--auth-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.create-food__form {
+  display: grid;
+  gap: 18px;
+}
+
+.create-food__field {
+  display: grid;
+  gap: 8px;
+}
+
+.create-food__field label,
+.create-food__field span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--auth-ink);
+}
+
+.create-food__field input,
+.create-food__field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--auth-border);
+  background: var(--auth-card);
+  color: var(--auth-ink);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.create-food__field input::placeholder,
+.create-food__field textarea::placeholder {
+  color: #b3b1a9;
+}
+
+.create-food__field input:focus,
+.create-food__field textarea:focus {
+  border-color: var(--auth-accent);
+  box-shadow: 0 0 0 3px var(--auth-accent-soft);
+}
+
+.create-food__field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.create-food__file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--auth-border);
+  background: var(--auth-card);
+  color: var(--auth-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.create-food__file-label:hover {
+  border-color: var(--auth-accent);
+}
+
+.create-food__file-input {
+  display: none;
+}
+
+.create-food__file-text {
+  font-size: 14px;
+  color: var(--auth-ink);
+}
+
+.create-food__submit {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 0;
+  background: var(--auth-accent);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.create-food__submit:hover {
+  background: var(--auth-accent-hover);
+  transform: translateY(-1px);
+}
+
+.create-food__submit:focus-visible {
+  outline: 2px solid var(--auth-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .create-food {
+    padding: 18px 12px;
+  }
+
+  .create-food__card {
+    padding: 22px 18px 20px;
+    border-radius: 20px;
+  }
+
+  .create-food__title {
+    font-size: 28px;
+  }
+
+  .create-food__field input,
+  .create-food__field textarea {
+    padding: 12px 14px;
+  }
+
+  .create-food__file-label {
+    padding: 12px 14px;
+  }
+}
+
+.create-food__preview {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--auth-border);
+  border-radius: 18px;
+  background: var(--auth-accent-soft);
+}
+
+.create-food__preview-video {
+  width: 100%;
+  max-height: 240px;
+  border-radius: 14px;
+  background: #000;
+  object-fit: cover;
+}
+
+.create-food__preview-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.create-food__preview-remove {
+  border: none;
+  background: transparent;
+  color: var(--auth-accent);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+
+.create-food__preview-remove:hover {
+  background: rgba(22, 89, 74, 0.1);
+}

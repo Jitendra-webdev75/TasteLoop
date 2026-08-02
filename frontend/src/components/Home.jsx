@@ -13,7 +13,7 @@ function Home() {
       })
       .then((response) => {
         setFoodItems(response.data.foodItem);
-        console.log(foodItems.length);
+        // console.log(foodItems.length);
       })
       .catch((error) => {
         console.error("Failed to fetch food items:", error);

@@ -4,39 +4,42 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function FoodPartnerRegister() {
-  const [form, setForm] = useState({ fullName: "", email: "", password: "" });
+  const [form, setForm] = useState({
+    fullName: "",
+    address: "",
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    // setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // setError("");
+    setError("");
 
-    // if (!form.fullName || !form.email || !form.password) {
-    //   setError("Fill in every field to create your account.");
-    //   return;
-    // }
+    try {
+      await axios.post(
+        "http://localhost:3000/api/auth/manager/register",
+        {
+          fullname: form.fullName,
+          address: form.address,
+          email: form.email,
+          password: form.password,
+        },
+        { withCredentials: true },
+      );
 
-    const fullName = e.target.fullName.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const response = axios.post(
-      "http://localhost:3000/api/auth/manager/register",
-      {
-        fullname: fullName,
-        email: email,
-        password: password,
-      },
-      { withCredentials: true },
-    );
-
-    console.log(response.data);
-
-    navigate("/food");
+      navigate("/food");
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+          "Unable to create the partner account.",
+      );
+    }
   };
 
   return (
@@ -61,8 +64,21 @@ function FoodPartnerRegister() {
             name="fullName"
             type="text"
             placeholder="Owner or manager name"
-            // value={form.fullName}
-            // onChange={handleChange}
+            value={form.fullName}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="auth-field">
+          <label htmlFor="address">Business address</label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            placeholder="Street, city, state"
+            value={form.address}
+            onChange={handleChange}
+            required
           />
         </div>
 
@@ -73,8 +89,8 @@ function FoodPartnerRegister() {
             name="email"
             type="email"
             placeholder="you@example.com"
-            // value={form.email}
-            // onChange={handleChange}
+            value={form.email}
+            onChange={handleChange}
           />
         </div>
 
@@ -85,12 +101,12 @@ function FoodPartnerRegister() {
             name="password"
             type="password"
             placeholder="Create a password"
-            // value={form.password}
-            // onChange={handleChange}
+            value={form.password}
+            onChange={handleChange}
           />
         </div>
 
-        {/* {error ? <p className="auth-error">{error}</p> : null} */}
+        {error ? <p className="auth-error">{error}</p> : null}
 
         <button type="submit" className="auth-submit">
           Create account

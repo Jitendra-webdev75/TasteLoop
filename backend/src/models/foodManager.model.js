@@ -6,6 +6,11 @@ const managerSchema = new mongoose.Schema(
       require: true,
       lowercase: true,
     },
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     email: {
       type: String,
       require: true,

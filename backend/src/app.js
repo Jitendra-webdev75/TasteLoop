@@ -1,6 +1,7 @@
 const express = require("express");
 const authRoute = require("./routes/auth.route.js");
 const foodRoute = require("./routes/food.route.js");
+const foodPartnerRoute = require("./routes/food-partner.js");
 const app = express();
 const connectDB = require("./db/db.js");
 const cookieParser = require("cookie-parser");
@@ -16,5 +17,6 @@ app.use(
 );
 app.use("/api/auth", authRoute);
 app.use("/api/food", foodRoute);
+app.use("/api/food-partner", foodPartnerRoute);
 
 module.exports = app;

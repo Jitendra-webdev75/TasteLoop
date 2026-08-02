@@ -4,7 +4,8 @@ import Userlogin from "../components/Userlogin";
 import Foodpartnerregister from "../components/Foodpartnerregister";
 import Foodpartnerlogin from "../components/Foodpartnerlogin";
 import Home from "../components/Home";
-import Food from "../AddFood/Food";
+import Profile from "../AddFood/profile";
+import CreateFood from "../AddFood/CreateFood";
 function UserRoute() {
   return (
     <Router>
@@ -18,7 +19,8 @@ function UserRoute() {
           element={<Foodpartnerregister />}
         />
         <Route path="/food-partner/login" element={<Foodpartnerlogin />} />
-        <Route path="/food" element={<Food />} />
+        <Route path="/food" element={<CreateFood />} />
+        <Route path="/food-partner/:id" element={<Profile />} />
       </Routes>
     </Router>
   );

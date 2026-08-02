@@ -64,7 +64,7 @@ const logOutUser = async (req, res) => {
 };
 
 const registerManager = async (req, res) => {
-  const { fullname, email, password } = req.body;
+  const { fullname, address, email, password } = req.body;
   const isUSerExist = await Manager_model.findOne({
     email,
   });
@@ -76,6 +76,7 @@ const registerManager = async (req, res) => {
   const hashPassword = await bcrypt.hash(password, 10);
   const manager = await Manager_model.create({
     fullname,
+    address,
     email,
     password: hashPassword,
   });
