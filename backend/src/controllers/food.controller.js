@@ -58,8 +58,9 @@ const likeFood = async (req, res) => {
     await foodmodel.findByIdAndUpdate(foodId, {
       $inc: { likeCount: -1 },
     });
-    return res.status(400).json({
-      message: "you already likeed this video",
+    return res.status(200).json({
+      message: "user unliked the video",
+      createLike: false,
     });
   }
 
@@ -73,7 +74,7 @@ const likeFood = async (req, res) => {
   });
   return res.status(201).json({
     message: "user liked the video",
-    createLike,
+    createLike: true,
   });
 };
 
@@ -82,28 +83,54 @@ const saveFood = async (req, res) => {
   const user = req.user;
 
   const isAlreadySave = await savemodel.findOne({
-    user: user_id,
+    user: user._id,
     food: foodId,
   });
 
   if (isAlreadySave) {
     await savemodel.deleteOne({
-      user: user_id,
+      user: user._id,
       food: foodId,
     });
 
-    return res.status(400).json({
+    await foodmodel.findByIdAndUpdate(foodId, {
+      $inc: { saveCount: -1 },
+    });
+
+    return res.status(200).json({
       message: "already saved",
+      createSave: false,
     });
   }
 
   const save = await savemodel.create({
-    user: user_id,
+    user: user._id,
     food: foodId,
   });
 
+  await foodmodel.findByIdAndUpdate(foodId, {
+    $inc: { saveCount: 1 },
+  });
   return res.status(201).json({
     message: "saved successfully",
+    createSave: true,
   });
 };
-module.exports = { createFood, getFoodItems, likeFood, saveFood };
+
+const getSaveVideo = async (req, res) => {
+  const user = req.user;
+
+  const savevideo = await savemodel.findById(user._id).populate(food);
+
+  if (!saveFood || savevideo.length == 0) {
+    return res.status(400).json({
+      message: "no save food is here",
+    });
+  }
+
+  return res.status(200).json({
+    message: "saved video is here",
+    savevideo,
+  });
+};
+module.exports = { createFood, getFoodItems, likeFood, saveFood, getSaveVideo };

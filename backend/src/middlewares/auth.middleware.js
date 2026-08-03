@@ -1,4 +1,5 @@
 const foodManagerUser = require("../models/foodManager.model.js");
+const usermodel = require("../models/user.model.js");
 const jwt = require("jsonwebtoken");
 
 const foodMangaerMiddleware = async (req, res, next) => {
@@ -32,7 +33,7 @@ const userMiddleware = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await foodManagerUser.findById(decoded.id);
+    const user = await usermodel.findById(decoded.id);
     req.user = user;
     next();
   } catch (error) {
