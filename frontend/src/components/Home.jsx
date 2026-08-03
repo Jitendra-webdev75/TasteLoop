@@ -9,16 +9,16 @@ function Home() {
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/food/", {
-        withCredentials: true, // sends cookies/token, same as Postman does automatically
+        withCredentials: true,
       })
       .then((response) => {
         setFoodItems(response.data.foodItem);
-        // console.log(foodItems.length);
+        // console.log(response);
       })
       .catch((error) => {
         console.error("Failed to fetch food items:", error);
       });
-  }, []); // empty array = runs only once, on mount
+  }, []);
 
   return (
     <div className="reels-container">
