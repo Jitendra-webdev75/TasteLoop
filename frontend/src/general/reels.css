@@ -192,3 +192,9 @@
   height: 20px;
   font-size: 14px;
 }
+
+.reel-footer-btn.active {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}

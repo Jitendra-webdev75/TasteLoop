@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RiHeartLine, RiHeartFill } from "@remixicon/react";
 /**
  * One full-screen video in the feed.
  * Plays automatically once ~60% of it is visible, pauses when scrolled away.
  */
-function VideoCard({ video }) {
+function VideoCard({ video, onSaveChange }) {
   const videoRef = useRef(null);
   const likeCount = video.likeCount ?? 0;
   const commentCount = video.commentCount ?? 0;
@@ -49,6 +49,10 @@ function VideoCard({ video }) {
       } else {
         setBookmarkcount((prev) => Math.max(0, prev - 1));
       }
+
+      if (typeof onSaveChange === "function") {
+        onSaveChange();
+      }
     } catch (error) {
       console.error("Bookmark request failed", error);
     }
@@ -78,6 +82,9 @@ function VideoCard({ video }) {
   }, []);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHomeActive = location.pathname === "/";
+  const isSavedActive = location.pathname === "/saved";
 
   return (
     <div className="reel-card">
@@ -134,7 +141,7 @@ function VideoCard({ video }) {
           </div>
           <div className="reel-footer-menu">
             <button
-              className="reel-footer-btn"
+              className={`reel-footer-btn ${isHomeActive ? "active" : ""}`}
               type="button"
               onClick={() => navigate("/")}
             >
@@ -142,7 +149,7 @@ function VideoCard({ video }) {
               Home
             </button>
             <button
-              className="reel-footer-btn"
+              className={`reel-footer-btn ${isSavedActive ? "active" : ""}`}
               type="button"
               onClick={() => navigate("/saved")}
             >

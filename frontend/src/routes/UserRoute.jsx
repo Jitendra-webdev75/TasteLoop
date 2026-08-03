@@ -7,6 +7,8 @@ import Home from "../components/Home";
 import Saved from "../components/Saved";
 import Profile from "../AddFood/profile";
 import CreateFood from "../AddFood/CreateFood";
+import ProtectedRoute from "./ProtectedRoute";
+
 function UserRoute() {
   return (
     <Router>
@@ -23,6 +25,7 @@ function UserRoute() {
         <Route path="/food-partner/login" element={<Foodpartnerlogin />} />
         <Route path="/food" element={<CreateFood />} />
         <Route path="/food-partner/:id" element={<Profile />} />
+        <Route path="/food" element={<ProtectedRoute />} />
       </Routes>
     </Router>
   );
