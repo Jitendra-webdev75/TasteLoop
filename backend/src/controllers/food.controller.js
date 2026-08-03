@@ -120,9 +120,9 @@ const saveFood = async (req, res) => {
 const getSaveVideo = async (req, res) => {
   const user = req.user;
 
-  const savevideo = await savemodel.findById(user._id).populate(food);
+  const savevideo = await savemodel.find({ user: user._id }).populate("food");
 
-  if (!saveFood || savevideo.length == 0) {
+  if (!savevideo || savevideo.length == 0) {
     return res.status(400).json({
       message: "no save food is here",
     });

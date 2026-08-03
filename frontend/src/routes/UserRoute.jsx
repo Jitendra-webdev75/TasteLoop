@@ -4,6 +4,7 @@ import Userlogin from "../components/Userlogin";
 import Foodpartnerregister from "../components/Foodpartnerregister";
 import Foodpartnerlogin from "../components/Foodpartnerlogin";
 import Home from "../components/Home";
+import Saved from "../components/Saved";
 import Profile from "../AddFood/profile";
 import CreateFood from "../AddFood/CreateFood";
 function UserRoute() {
@@ -11,6 +12,7 @@ function UserRoute() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/saved" element={<Saved />} />
 
         <Route path="/user/register" element={<Userregister />} />
         <Route path="/user/login" element={<Userlogin />} />

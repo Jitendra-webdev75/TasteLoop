@@ -9,7 +9,7 @@ const saveSchema = new mongoose.Schema(
 
     food: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Food",
+      ref: "food",
     },
   },
   { timestamps: true },

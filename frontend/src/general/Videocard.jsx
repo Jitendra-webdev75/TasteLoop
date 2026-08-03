@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiHeartLine, RiHeartFill } from "@remixicon/react";
 /**
  * One full-screen video in the feed.
@@ -77,6 +77,8 @@ function VideoCard({ video }) {
     return () => observer.disconnect();
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div className="reel-card">
       <video
@@ -131,11 +133,19 @@ function VideoCard({ video }) {
             <span className="reel-footer-label">Explore more reels</span>
           </div>
           <div className="reel-footer-menu">
-            <button className="reel-footer-btn" type="button">
+            <button
+              className="reel-footer-btn"
+              type="button"
+              onClick={() => navigate("/")}
+            >
               <span className="reel-footer-icon">🏠</span>
               Home
             </button>
-            <button className="reel-footer-btn" type="button">
+            <button
+              className="reel-footer-btn"
+              type="button"
+              onClick={() => navigate("/saved")}
+            >
               <span className="reel-footer-icon">💾</span>
               Saved
             </button>
