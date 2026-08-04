@@ -136,9 +136,6 @@ function VideoCard({ video, onSaveChange }) {
         </div>
 
         <div className="reel-footer">
-          <div className="reel-footer-left">
-            <span className="reel-footer-label">Explore more reels</span>
-          </div>
           <div className="reel-footer-menu">
             <button
               className={`reel-footer-btn ${isHomeActive ? "active" : ""}`}
