@@ -1,16 +1,32 @@
-# React + Vite
+# TasteLoop - Food App 🍔🍕🍩
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack food platform where users can explore food videos, save their favorite items, like posts, and manage food media with a mobile-first responsive design.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Live Site**: [Insert Your Live Link Here]
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Mobile-First Approach**: Fully optimized for mobile screens first and scalable to desktop displays.
+- **User Authentication**: Secure JWT-based authentication for users and creators.
+- **Media Uploads**: Video and image uploads integrated with ImageKit.
+- **Interactions**: Like/unlike videos and dynamic like counter updates.
+- **Saved Items**: Bookmark and manage saved recipes and videos.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React.js, React Router DOM, Mobile-First CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB & Mongoose
+- **Services**: ImageKit SDK, Multer, JWT
+
+## API Endpoints
+
+### Food Routes
+
+- **POST** `/api/food/create` - Upload & create food item
+- **GET** `/api/food/get-all` - Fetch all food items
+- **POST** `/api/food/like` - Like/Unlike a food item
+- **POST** `/api/food/save` - Save/Unsave a food item
+- **GET** `/api/food/save-video` - Fetch saved videos for current user
