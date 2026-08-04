@@ -23,7 +23,7 @@ function UserRegister() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const response = await axios.post(
-      "http://localhost:3000/api/auth/user/register",
+      "https://tasteloop.onrender.com/api/auth/user/register",
       {
         fullname: fullName,
         email: email,

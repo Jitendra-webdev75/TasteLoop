@@ -27,7 +27,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/food-partner/${id}`)
+      .get(`https://tasteloop.onrender.com/api/food-partner/${id}`)
       .then((response) => {
         setProfile(response.data.foodPartnerDetail);
         setVideo(response.data.foodPartnerDetail.foodItems);

@@ -21,7 +21,7 @@ function FoodPartnerLogin() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const response = await axios.post(
-      "http://localhost:3000/api/auth/manager/login",
+      "https://tasteloop.onrender.com/api/auth/manager/login",
       {
         email: email,
         password: password,

@@ -18,7 +18,7 @@ function VideoCard({ video, onSaveChange }) {
   const likeVideo = async (item) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/like",
+        "https://tasteloop.onrender.com/api/food/like",
         { foodId: item._id },
         { withCredentials: true },
       );
@@ -38,7 +38,7 @@ function VideoCard({ video, onSaveChange }) {
   const saveVideo = async (item) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/save",
+        "https://tasteloop.onrender.com/api/food/save",
         { foodId: item._id },
         { withCredentials: true },
       );

@@ -23,7 +23,7 @@ function FoodPartnerRegister() {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/auth/manager/register",
+        "https://tasteloop.onrender.com/api/auth/manager/register",
         {
           fullname: form.fullName,
           address: form.address,

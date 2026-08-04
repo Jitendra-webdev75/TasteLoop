@@ -61,7 +61,7 @@ function CreateFood() {
     formdata.append("desc", formData.description);
 
     const response = await axios.post(
-      "http://localhost:3000/api/food/",
+      "https://tasteloop.onrender.com/api/food/",
       formdata,
       {
         withCredentials: true,

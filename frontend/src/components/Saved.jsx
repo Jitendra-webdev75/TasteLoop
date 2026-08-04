@@ -9,7 +9,7 @@ function Saved() {
 
   const loadSavedVideos = () => {
     axios
-      .get("http://localhost:3000/api/food/save", {
+      .get("https://tasteloop.onrender.com/api/food/save", {
         withCredentials: true,
       })
       .then((response) => {
