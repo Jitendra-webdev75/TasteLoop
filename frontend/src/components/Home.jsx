@@ -12,21 +12,28 @@ function Home() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
-    setLoading(false);
-
-    if (token) {
-      axios
-        .get("https://tasteloop.onrender.com/api/food/", {
-          withCredentials: true,
-        })
-        .then((response) => {
-          setFoodItems(response.data.foodItem);
-        })
-        .catch((error) => {
-          console.error("Failed to fetch food items:", error);
-        });
+    if (!token) {
+      setIsAuthenticated(false);
+      setLoading(false);
+      return;
     }
+
+    axios
+      .get("https://tasteloop.onrender.com/api/food/", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setFoodItems(response.data.foodItem || []);
+        setIsAuthenticated(true);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch food items:", error);
+        localStorage.removeItem("token");
+        setIsAuthenticated(false);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -46,6 +53,26 @@ function Home() {
             onClick={() => navigate("/user/login")}
           >
             Go to Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (foodItems.length === 0) {
+    return (
+      <div className="reels-container" style={styles.emptyContainer}>
+        <div style={styles.emptyBox}>
+          <h2 style={styles.popupTitle}>No reels available</h2>
+          <p style={styles.popupText}>
+            We couldn't load any reels right now. Please try again after logging
+            in.
+          </p>
+          <button
+            style={styles.loginButton}
+            onClick={() => navigate("/user/login")}
+          >
+            Log in again
           </button>
         </div>
       </div>
@@ -89,6 +116,22 @@ const styles = {
     color: "#666",
     marginBottom: "30px",
     lineHeight: "1.5",
+  },
+  emptyContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "100vh",
+    backgroundColor: "#f5f5f5",
+  },
+  emptyBox: {
+    backgroundColor: "white",
+    padding: "40px",
+    borderRadius: "15px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+    maxWidth: "400px",
+    width: "90%",
   },
   loginButton: {
     backgroundColor: "#ff6b35",
