@@ -117,7 +117,11 @@ const loginManager = async (req, res) => {
   }
 
   const token = jwt.sign({ id: manager._id }, process.env.JWT_SECRET);
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   return res.status(200).json({
     message: "manager login successfully",
     manager,
