@@ -2,9 +2,9 @@
 
 A full-stack food platform where users can explore food videos, save their favorite items, like posts, and manage food media with a mobile-first responsive design.
 
-## Live Demo
+## Live Demo ✅✅
 
-- **Live Site**: [Insert Your Live Link Here]
+- **Live Site**: https://taste-loop-pi.vercel.app/
 
 ## Features
 
