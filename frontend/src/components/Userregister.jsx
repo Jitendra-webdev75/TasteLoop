@@ -33,6 +33,8 @@ function UserRegister() {
     );
 
     console.log(response.data);
+    // Store token in localStorage to indicate user is logged in
+    localStorage.setItem("token", "user-logged-in");
     navigate("/");
   };
 
