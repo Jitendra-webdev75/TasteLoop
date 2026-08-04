@@ -33,11 +33,14 @@ function Saved() {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
     setLoading(false);
+  }, []); // Runs once on mount
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
     if (token) {
       loadSavedVideos();
     }
-  }, [refreshKey]);
+  }, [refreshKey]); // Runs when refreshKey changes
 
   const handleSaveToggle = () => {
     setRefreshKey((prev) => prev + 1);
@@ -124,8 +127,5 @@ const styles = {
     transition: "background-color 0.3s ease",
   },
 };
-
-export default Saved;
-}
 
 export default Saved;
